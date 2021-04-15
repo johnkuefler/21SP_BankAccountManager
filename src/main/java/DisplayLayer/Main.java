@@ -11,6 +11,7 @@ import BusinessLayer.User;
 import DataLayer.BankAccountDataManager;
 import DataLayer.TransactionDataManager;
 import DataLayer.UserDataManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         UserDataManager userDm = new UserDataManager();
         BankAccountDataManager bankAccountDm = new BankAccountDataManager();
@@ -40,8 +41,10 @@ public class Main {
         bankAccountDm.create(bobsSavings);
 
         ArrayList<User> allUsers = userDm.getAll();
+        System.out.println(allUsers.size());
+
         System.out.println(allUsers);
-        
+
         ArrayList<BankAccount> bobsAccounts = bankAccountDm.getByUserId(2);
         System.out.println(bobsAccounts);
     }
